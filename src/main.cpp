@@ -1,5 +1,8 @@
 #include <cinder/app/RendererGl.h>
+#include <cinder/Rand.h>
 #include <cinder/gl/gl.h>
+
+#include "particlecontroller.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -21,33 +24,42 @@ public:
 	void resize() override;
 
 private:
-	ci::Color mBackgroundColor;
+	ci::Color mColor, mBackgroundColor;
+	ParticleController mParticleController;
 };
 
 void
 CinderApp::setup()
 {
-	mBackgroundColor = Color(0, 1, 0);
-
 	ci::app::getWindow()->setTitle("cinder-scr-spots");
+	
+	mBackgroundColor = Color(0, 0, 0);
+
+	Rand::randSeed((int32_t) time(NULL));	// feed randomizer with seed
+
+	mParticleController.addParticles(200);
 }
 
 void
 CinderApp::update()
 {
-	// update routines here
+	mParticleController.update();
 }
 
 void
 CinderApp::draw()
 {
 	gl::clear(mBackgroundColor);
+	mParticleController.draw();
 }
 
 void
 CinderApp::resize()
 {
-	// empty
+	// TODO
+	// Not needed so much as screensaver starts in full screen
+	// and no resize occur during run, but great to have for 
+	// 'DEBUG' mode, when resize can occur
 }
 
 #ifdef  _DEBUG
