@@ -58,7 +58,7 @@ CinderApp::resize()
 {
 	// TODO
 	// Not needed so much as screensaver starts in full screen
-	// and no resize occur during run, but great to have for 
+	// and no resize occurs during run, but great to have for 
 	// 'DEBUG' mode, when resize can occur
 }
 

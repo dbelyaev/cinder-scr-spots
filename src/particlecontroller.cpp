@@ -1,9 +1,5 @@
 #include "particlecontroller.h"
 
-
-using namespace ci;
-
-
 ParticleController::ParticleController()
 {
 }
